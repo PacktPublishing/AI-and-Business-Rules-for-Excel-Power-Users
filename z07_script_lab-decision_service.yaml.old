@@ -1,0 +1,140 @@
+name: 07 Script Lab Decision Service
+description: Calls Our Decision Service using values in the Sheet
+host: EXCEL
+api_set: {}
+script:
+  content: |
+    /* 
+    Example calling Decision Service from Excel Using Script Lab
+    */
+
+    //Because the following lines are not part of any function, they wil
+    //run as soon as Script Lab loads
+    console.log("Example Started");
+
+    // setup our standard package wwe will pass to the Decision Service
+    // we can change the values using script later but
+    // easier to start with defaults like this
+    const payload = [
+      {
+        Customer: {
+          Number: 10000,
+          Name: "Jane Doe",
+          "Date of Birth": 2022 - 10 - 15,
+          "Country of Residence": "UK",
+          "Special Requests": "lactose intolerant",
+          "Previous Orders": [0]
+        }
+      }
+    ];
+
+    // Update the values on the form using these defaults
+    $("#cNumber").val(1);
+
+    // Link the button on the HTML page to the function we want to run
+    // wrapping it in trycatch() is more helpful if things go wrong.
+    $("#import-json-data").click(() => tryCatch(callDecisionService));
+
+    /**
+     * This is the function that will run when the button is clicked
+     *
+     * The first two lines are standard - so the Script can continue
+     * running after it has made the call over the web.
+     */
+    async function callDecisionService() {
+      await Excel.run(async (context) => {
+        /**
+         * This is where the interesting stuff starts!
+         * You can edit from here
+         */
+
+        console.log(payload);
+
+        context.workbook.worksheets.getItemOrNullObject("Sample").delete();
+        const sheet = context.workbook.worksheets.add("Sample");
+
+        let expensesTable = sheet.tables.add("A1:D1", true);
+        expensesTable.name = "ExpensesTable";
+        expensesTable.getHeaderRowRange().values = [["Date", "Merchant", "Category", "Amount"]];
+
+        /**    const newData = transactions.map((item) => [item.DATE, item.MERCHANT, item.CATEGORY, item.AMOUNT]);
+     
+        expensesTable.rows.add(null, newData);
+    */
+        sheet.getUsedRange().format.autofitColumns();
+        sheet.getUsedRange().format.autofitRows();
+
+        sheet.activate();
+
+        /**Stop Editing here!
+         * The next line waits for our remote calls to catch up with us
+         * brackets close off the function
+         */
+
+        await context.sync();
+      });
+    }
+
+    /** Default helper for invoking an action and handling errors.
+     *
+     * You don't need to edit this now, but you may upgrade it later
+     * If you wanted a very sophisticated UI
+     *
+     * This sample is based on standard Import JSON example that
+     * comes with Scriptlab.
+     *
+     */
+    async function tryCatch(callback) {
+      try {
+        await callback();
+      } catch (error) {
+        // Note: In a production add-in, you'd want to notify the user through your add-in's UI.
+        console.error(error);
+      }
+    }
+  language: typescript
+template:
+  content: "<section class=\"ms-font-m\">\n\t<p>This sample shows how to link Excel to our Decision Service using Microsoft Script Lab.</p>\n</section>\n\n<section class=\"samples ms-font-m\">\n\t<h3>Upate the values, then press the button!</h3>\n\n\t<div class=\"ms-TextField\">Rest Url\n\t\t<input type=\"text\" id=\"RestUrl\" value=\"update me\"/>\n\t</div>\n\t\t<div class=\"ms-TextField\">Customer Number\n\t\t\t<input type=\"number\" id=\"cNumber\" value=\"update me\"/>\n\t</div>\n\t\t\t<div class=\"ms-TextField\">Date of Birth\n\t\t\t\t<input type=\"date\" id=\"dob\" value=\"update me\"/>\n\t</div>\n\t\t\t\t<div class=\"ms-TextField\">Country of Residence\n\t\t\t\t\t<input type=\"text\" id=\"country\" value=\"update me\"/>\n\t</div>\n\t\t\t\t\t<div class=\"ms-TextField\">Special Requests\n\t\t\t\t\t\t<input type=\"text\" id=\"Special Requests\" value=\"update me\"/>\n\t</div>\n\n\t\t\t\t\t\t<br/>\n\t\t\t\t\t\t<button id=\"import-json-data\" class=\"ms-Button\">\n        <span class=\"ms-Button-label\">Get Product Recommnendation</span>\n    </button>\n</section>"
+  language: html
+style:
+  content: |
+    /**
+    * This is a standard CSS File provided by ScriptLab
+    * That dictates to the look and feel of the web page.
+    * 
+    * It is possible to make this more sophisticated.
+    * CSS is a standard web technology with a lot of 
+    * resources online.
+    */
+
+    section.samples {
+        margin-top: 20px;
+    }
+
+    section.samples .ms-Button, section.setup .ms-Button {
+        display: block;
+        margin-bottom: 5px;
+        margin-left: 20px;
+        min-width: 80px;
+    }
+  language: css
+libraries: |
+  // Libraries that ScriptLab imports to get more done, quicker
+
+  // Microsoft Javascript library that gives access to Excel / Office Objects
+  https://appsforoffice.microsoft.com/lib/1/hosted/office.js
+  @types/office-js
+
+  //Fabric CSS helps give us a standard Office look and feel
+  office-ui-fabric-js@1.4.0/dist/css/fabric.min.css
+  office-ui-fabric-js@1.4.0/dist/css/fabric.components.min.css
+
+  // Core JS is a widely used Javascript library to minimize the gaps
+  // between different ersions 
+  core-js@2.4.1/client/core.min.js
+  @types/core-js
+
+  //JQuery is a standard library for manipulating our HTML page from Javascript,
+  //Including registering that code should run when a button is clicked
+  jquery@3.1.1
+  @types/jquery@3.3.1
