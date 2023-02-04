@@ -1,0 +1,100 @@
+﻿Order Number,Country,Customer Age,Country-Region Code,Qty Silk Tray,Qty Lumpy Bar,Qty Peanut,Qty,Main Product
+9,South Africa,64,402,,,55,244,Peanut Candy
+14,United States,68,103,,,97,268,Peanut Candy
+84,United States,70,118,,,97,451,Peanut Candy
+16,United States,80,108,,,98,500,Peanut Candy
+21,United States,77,101,,,98,389,Peanut Candy
+57,United States,56,105,,,99,309,Peanut Candy
+88,United States,73,124,,,99,377,Peanut Candy
+43,United States,69,121,,,101,719,Peanut Candy
+65,United States,76,99,,,101,390,Peanut Candy
+75,United States,54,122,,,102,306,Peanut Candy
+96,United States,86,102,,,102,434,Peanut Candy
+63,United States,73,120,,,103,287,Peanut Candy
+92,United States,64,111,,,103,345,Peanut Candy
+55,United States,80,95,,,104,700,Peanut Candy
+91,United States,78,112,,,104,301,Peanut Candy
+20,South Africa,61,405,,18,,529,Lumpy Bar
+61,South Africa,88,404,,19,,460,Lumpy Bar
+64,South Africa,68,401,,20,,276,Lumpy Bar
+15,South Africa,69,402,,21,,369,Lumpy Bar
+89,South Africa,84,403,,22,,749,Lumpy Bar
+37,South Africa,65,406,,23,,551,Lumpy Bar
+12,South Africa,58,407,,24,,245,Lumpy Bar
+95,South Africa,55,399,,30,,237,Lumpy Bar
+1,South Africa,64,396,,31,,552,Lumpy Bar
+87,South Africa,76,410,,32,,615,Lumpy Bar
+71,South Africa,77,406,,33,,424,Lumpy Bar
+60,South Africa,82,407,,34,,449,Lumpy Bar
+53,South Africa,83,405,,38,,454,Lumpy Bar
+28,South Africa,83,404,,39,,657,Lumpy Bar
+2,Netherlands,44,214,55,,,166,Silk Tray
+3,South Africa,63,400,79,,,237,Silk Tray
+4,New Zealand,56,228,70,,,210,Silk Tray
+5,South Africa,72,398,91,,,548,Silk Tray
+6,United States,80,139,100,,,300,Silk Tray
+7,Japan,87,300,109,,,110,Silk Tray
+8,Ireland,59,411,74,,,444,Silk Tray
+10,United States,68,122,86,,,260,Silk Tray
+11,Japan,62,329,78,,,468,Silk Tray
+13,Sri Lanka,47,244,59,,,177,Silk Tray
+17,South Africa,53,393,67,,,610,Silk Tray
+18,Japan,70,332,88,,,266,Silk Tray
+19,Ireland,64,434,80,,,484,Silk Tray
+22,South Africa,45,353,57,,,172,Silk Tray
+23,Sri Lanka,72,278,91,,,273,Silk Tray
+24,United States,76,124,95,,,287,Silk Tray
+25,Japan,57,338,72,,,649,Silk Tray
+26,UK,48,202,61,,,184,Silk Tray
+27,Netherlands,80,209,100,,,403,Silk Tray
+29,Ireland,59,437,74,,,222,Silk Tray
+30,Japan,56,302,71,,,426,Silk Tray
+31,Japan,72,331,91,,,548,Silk Tray
+32,UK,56,190,71,,,645,Silk Tray
+33,United States,54,125,68,,,412,Silk Tray
+34,Japan,72,322,90,,,542,Silk Tray
+35,Japan,56,287,71,,,215,Silk Tray
+36,Ireland,64,429,81,,,244,Silk Tray
+38,UK,48,180,61,,,371,Silk Tray
+39,New Zealand,57,220,72,,,216,Silk Tray
+40,Ireland,55,454,69,,,624,Silk Tray
+41,Japan,42,302,53,,,160,Silk Tray
+42,Japan,49,304,62,,,125,Silk Tray
+44,Ireland,79,456,99,,,299,Silk Tray
+45,United States,85,147,107,,,321,Silk Tray
+46,Ireland,24,449,31,,,93,Silk Tray
+47,Sri Lanka,80,264,100,,,300,Silk Tray
+48,Japan,30,285,38,,,115,Silk Tray
+49,UK,76,173,96,,,581,Silk Tray
+50,Japan,76,336,95,,,571,Silk Tray
+51,Sri Lanka,56,275,70,,,211,Silk Tray
+52,New Zealand,32,226,40,,,120,Silk Tray
+54,United States,56,129,70,,,425,Silk Tray
+56,Japan,75,280,94,,,567,Silk Tray
+58,UK,57,200,72,,,145,Silk Tray
+59,Netherlands,57,219,72,,,434,Silk Tray
+62,Ireland,36,467,45,,,136,Silk Tray
+66,UK,54,187,68,,,615,Silk Tray
+67,South Africa,60,363,75,,,450,Silk Tray
+68,Sri Lanka,72,250,91,,,365,Silk Tray
+69,Ireland,68,466,86,,,520,Silk Tray
+70,Sri Lanka,68,253,86,,,258,Silk Tray
+72,South Africa,28,368,36,,,110,Silk Tray
+73,Ireland,59,464,74,,,223,Silk Tray
+74,UK,60,206,75,,,150,Silk Tray
+76,Japan,76,320,95,,,575,Silk Tray
+77,United States,54,131,68,,,613,Silk Tray
+78,Sri Lanka,76,259,96,,,288,Silk Tray
+79,Netherlands,80,212,100,,,403,Silk Tray
+80,Sri Lanka,20,272,25,,,76,Silk Tray
+81,Ireland,53,430,67,,,605,Silk Tray
+82,Netherlands,80,210,100,,,403,Silk Tray
+83,Sri Lanka,76,256,95,,,380,Silk Tray
+85,Japan,48,302,60,,,121,Silk Tray
+86,South Africa,52,389,66,,,399,Silk Tray
+90,Japan,35,343,44,,,132,Silk Tray
+93,UK,56,198,71,,,142,Silk Tray
+94,Sri Lanka,77,260,97,,,292,Silk Tray
+97,Sri Lanka,73,253,92,,,370,Silk Tray
+98,New Zealand,58,230,73,,,220,Silk Tray
+99,UK,69,190,87,,,522,Silk Tray

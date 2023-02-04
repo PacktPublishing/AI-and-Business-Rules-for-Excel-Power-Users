@@ -1,0 +1,193 @@
+name: 07 Script Lab Decision Service
+description: Calls Our Decision Service using values in the Sheet
+host: EXCEL
+api_set: {}
+script:
+  content: >
+    /* 
+
+    Example calling Decision Service from Excel Using Script Lab
+
+    */
+
+
+    //Because the following lines are not part of any function, they will
+
+    //run as soon as Script Lab loads
+
+    console.log("Example Started");
+
+
+    // The URL of our decision service -you will need to update this
+
+    let url =
+      "https://dmn-dev-sandbox-gd12mqh3f203-crt-openshift-dev.apps.sandbox.x8i5.p1.openshiftapps.com/Customer Recommendations/Product Recommendation Service";
+
+    // headers - won't change
+
+    const headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    };
+
+
+    // setup our standard package wwe will pass to the Decision Service.
+
+    // We change the values using script  but easier to start with defaults like
+    this
+
+    let payload = {
+      Customer: {
+        Number: 10000,
+        Name: "Jane Doe",
+        "Date of Birth": "2022 - 10 - 15",
+        "Country of Residence": "NL",
+        "Special Requests": "NA",
+        "Previous Orders": [0]
+      }
+    };
+
+
+    // Update the values on the form using these defaults
+
+    $("#cNumber").val(payload.Customer.Number);
+
+    $("#countryResidence").val(payload.Customer["Country of Residence"]);
+
+    $("#specialRequests").val(payload.Customer["Special Requests"]);
+
+
+    // Link the button on the HTML page to the function we want to run
+
+    // wrapping it in trycatch() is more helpful if things go wrong.
+
+    $("#get-product-recommendation").click(() => tryCatch(callDecisionService));
+
+
+    /**
+     * This is the function that will run when the button is clicked
+     *
+     * The first two lines are standard - so the Script can continue
+     * running after it has made the call over the web.
+     */
+    async function callDecisionService() {
+      await Excel.run(async (context) => {
+        console.log("Country value:" + $("#countryResidence").val());
+
+        //update our payload with the values from the form
+        payload.Customer.Number = +$("#cNumber").val();
+        payload.Customer["Country of Residence"] = "" + $("#countryResidence").val();
+        payload.Customer["Special Requests"] = "" + $("#specialRequests").val();
+
+        // Log the values we are going to pass to the decision service
+        console.log("Calling Decision Service with the Payload");
+        console.log(JSON.stringify(payload));
+
+        // Make the call to the Decision Service and wait for response
+        const response = await fetch(url, { method: "POST", headers: headers, body: JSON.stringify(payload) });
+        const jsonResponse = await response.json();
+
+        // Log the values we we get back from the decision service. We don't stringify this, which allows you to explore the object tree in the Console.
+        console.log("Response from the Decision Service");
+        console.log(jsonResponse);
+
+        //get the specfic values within the response we are interested in
+        let productRecommendation = jsonResponse["decisionResults"][0]["result"];
+        console.log("Product Recommendation");
+        console.log(productRecommendation);
+
+        //(re)create our output sheet
+        context.workbook.worksheets.getItemOrNullObject("Product Recommendation").delete();
+        const sheet = context.workbook.worksheets.add("Product Recommendation");
+
+        //(re)create the Headers
+        let headerRange = sheet.getRange("A1:A1");
+        headerRange.format.fill.color = "#4472C4";
+        headerRange.format.font.color = "white";
+        headerRange.values = [["Recommendation from Decision Service"]];
+        headerRange.format.autofitColumns();
+
+        //Update the sheet with our recommendation
+        let datarange = sheet.getRange("A2:A2");
+        if (!Array.isArray(productRecommendation)){
+          
+          // single value
+          datarange.values = productRecommendation;
+        } else {
+
+          //mutiple values we put into one cell
+          //in real life you update a range
+          datarange.values= [[JSON.stringify(productRecommendation)]];
+        }
+      
+
+        //Set the sheet to active, tell Excel to sync UI
+        sheet.activate();
+        await context.sync();
+      });
+    }
+
+
+    /** Default helper for invoking an action and handling errors.
+     *
+     * You don't need to edit this now, but you may upgrade it later
+     * If you wanted a very sophisticated UI
+     *
+     * This sample is based on standard Import JSON example that
+     * comes with Scriptlab.
+     *
+     */
+    async function tryCatch(callback) {
+      try {
+        await callback();
+      } catch (error) {
+        // Note: In a production add-in, you'd want to notify the user through your add-in's UI.
+        console.error(error);
+      }
+    }
+  language: typescript
+template:
+  content: "<section class=\"ms-font-m\">\n\t<p>This sample shows how to link Excel to our Decision Service using Microsoft Script Lab.</p>\n</section>\n\n<section class=\"samples ms-font-m\">\n\t<h3>Update the values, then press the button to get a product recommendation</h3>\n\n\n\t<div class=\"ms-TextField\">Customer Number\n\t\t<input type=\"number\" id=\"cNumber\" value=\"update me\"/>\n\t</div>\n\n\t\t<div class=\"ms-TextField\">Country of Residence\n\t\t\t<input type=\"text\" id=\"countryResidence\" value=\"update me\"/>\n\t</div>\n\t\t\t<div class=\"ms-TextField\">Special Requests\n\t\t\t\t<input type=\"text\" id=\"specialRequests\" value=\"update me\"/>\n\t</div>\n\n\t\t\t\t<br/>\n\t\t\t\t<button id=\"get-product-recommendation\" class=\"ms-Button\">\n        <span class=\"ms-Button-label\">Get Product Recommendation</span>\n    </button>\n</section>"
+  language: html
+style:
+  content: |
+    /**
+    * This is a standard CSS File provided by ScriptLab
+    * That dictates to the look and feel of the web page.
+    * 
+    * It is possible to make this more sophisticated.
+    * CSS is a standard web technology with a lot of 
+    * resources online.
+    */
+
+    section.samples {
+        margin-top: 20px;
+    }
+
+    section.samples .ms-Button, section.setup .ms-Button {
+        display: block;
+        margin-bottom: 5px;
+        margin-left: 20px;
+        min-width: 80px;
+    }
+  language: css
+libraries: |
+  // Libraries that ScriptLab imports to get more done, quicker
+
+  // Microsoft Javascript library that gives access to Excel / Office Objects
+  https://appsforoffice.microsoft.com/lib/1/hosted/office.js
+  @types/office-js
+
+  //Fabric CSS helps give us a standard Office look and feel
+  office-ui-fabric-js@1.4.0/dist/css/fabric.min.css
+  office-ui-fabric-js@1.4.0/dist/css/fabric.components.min.css
+
+  // Core JS is a widely used Javascript library to minimize the gaps
+  // between different ersions 
+  core-js@2.4.1/client/core.min.js
+  @types/core-js
+
+  //JQuery is a standard library for manipulating our HTML page from Javascript,
+  //Including registering that code should run when a button is clicked
+  jquery@3.1.1
+  @types/jquery@3.3.1

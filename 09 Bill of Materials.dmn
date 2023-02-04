@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_4ED1AE61-D019-4728-8700-19137861BAA3" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_76C3F7F2-BEC8-4A8F-A97F-C15EA1DCBE6D" name="BOM" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_4ED1AE61-D019-4728-8700-19137861BAA3">
+  <dmn:extensionElements/>
+  <dmn:decisionService id="_7CCD7061-49B5-4BDC-A506-F8180FFA64E8" name="BOM Service">
+    <dmn:extensionElements/>
+    <dmn:variable id="_791E7A5F-993F-4446-93FB-DF9F349F8F02" name="BOM Service" typeRef="Any"/>
+    <dmn:outputDecision href="#_4C0AD11F-26D2-49DB-BF03-7C3DEE61AB45"/>
+    <dmn:encapsulatedDecision href="#_D06BA54A-74CE-4D60-B63E-29ED8611DD7C"/>
+    <dmn:inputData href="#_7E48F289-0E23-4A86-B086-1B18B3660215"/>
+    <dmn:inputData href="#_87FA3BB7-E566-4BFF-A56B-86C4826C9C72"/>
+  </dmn:decisionService>
+  <dmn:decision id="_D06BA54A-74CE-4D60-B63E-29ED8611DD7C" name="Product Details">
+    <dmn:extensionElements/>
+    <dmn:variable id="_26F1D1AD-897F-451E-B463-4DB11FA6AD5C" name="Product Details" typeRef="Any"/>
+    <dmn:relation id="_F3E114B3-992F-444A-A344-E4A5D5B3D114">
+      <dmn:column id="_54DE0150-9963-4FC8-A650-CE403D39A1D3" name="Name" typeRef="string"/>
+      <dmn:column id="_21350ECA-79CF-4AED-8B2D-0C6A526A9305" name="Weight" typeRef="number"/>
+      <dmn:column id="_FB166D4C-0E3B-4B4B-B4DE-383C3CE07071" name="Grams of Cocoa" typeRef="number"/>
+      <dmn:column id="_8FAD985A-4BB6-439C-850F-4527C24842BF" name="Grams of Sugar" typeRef="number"/>
+      <dmn:column id="_9749B103-D71F-4478-ACDC-2729B5404BBB" name="Grams Milk" typeRef="number"/>
+      <dmn:row id="_AAF29528-7FEE-46EC-B1B6-8D4A7C20C2B1">
+        <dmn:literalExpression id="_0ADA142E-7B67-4B32-8946-6B5F9964C09D">
+          <dmn:text>"Silk Tray"</dmn:text>
+        </dmn:literalExpression>
+        <dmn:literalExpression id="_2BC0510A-4E2F-4FDD-A7BB-1327F0869FA5">
+          <dmn:text>400</dmn:text>
+        </dmn:literalExpression>
+        <dmn:literalExpression id="_2BF1B248-8572-42F3-B216-0C2DA1E94068">
+          <dmn:text>150</dmn:text>
+        </dmn:literalExpression>
+        <dmn:literalExpression id="_F9460E1E-76AF-47EB-970D-B65A8EE8BF9D">
+          <dmn:text>150</dmn:text>
+        </dmn:literalExpression>
+        <dmn:literalExpression id="_401807EB-E884-4191-A546-68157D14EBB7">
+          <dmn:text>90</dmn:text>
+        </dmn:literalExpression>
+      </dmn:row>
+      <dmn:row id="_ACDC051C-40C0-4393-B333-44FE22789338">
+        <dmn:literalExpression id="_6E099A18-77C1-4990-BB66-884931B6B282">
+          <dmn:text>"Crunch"</dmn:text>
+        </dmn:literalExpression>
+        <dmn:literalExpression id="_0F1B1B38-DDBC-4270-B757-4D9AD3302211">
+          <dmn:text>75</dmn:text>
+        </dmn:literalExpression>
+        <dmn:literalExpression id="_74420960-E28E-41D9-A6FF-575A159B1241">
+          <dmn:text>10</dmn:text>
+        </dmn:literalExpression>
+        <dmn:literalExpression id="_6206EC37-22E2-45D7-B881-E608AA065CEA">
+          <dmn:text>60</dmn:text>
+        </dmn:literalExpression>
+        <dmn:literalExpression id="_A036CD25-E9DA-47D4-9508-8659B9E39A21">
+          <dmn:text>5</dmn:text>
+        </dmn:literalExpression>
+      </dmn:row>
+    </dmn:relation>
+  </dmn:decision>
+  <dmn:inputData id="_87FA3BB7-E566-4BFF-A56B-86C4826C9C72" name="Qty">
+    <dmn:extensionElements/>
+    <dmn:variable id="_4E9C8D02-7276-4570-9E41-63AF0EC7A88F" name="Qty" typeRef="number"/>
+  </dmn:inputData>
+  <dmn:inputData id="_7E48F289-0E23-4A86-B086-1B18B3660215" name="Product">
+    <dmn:extensionElements/>
+    <dmn:variable id="_910F1C94-F489-4813-8DCB-F43F960F4CF4" name="Product" typeRef="string"/>
+  </dmn:inputData>
+  <dmn:decision id="_4C0AD11F-26D2-49DB-BF03-7C3DEE61AB45" name="Bill of Materials">
+    <dmn:extensionElements/>
+    <dmn:variable id="_62811BBF-7E1D-44A7-B79B-2B5C48C86369" name="Bill of Materials" typeRef="Any"/>
+    <dmn:informationRequirement id="_7E14A2AD-27E4-4260-BAAE-A819C6FDC423">
+      <dmn:requiredInput href="#_87FA3BB7-E566-4BFF-A56B-86C4826C9C72"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_092A8D99-6B62-49B3-863A-C4350B3B9D66">
+      <dmn:requiredDecision href="#_D06BA54A-74CE-4D60-B63E-29ED8611DD7C"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_21608DC6-93E3-4E58-A395-F2EF8CEBC945">
+      <dmn:requiredInput href="#_7E48F289-0E23-4A86-B086-1B18B3660215"/>
+    </dmn:informationRequirement>
+    <dmn:context id="_5A55D553-EC29-4DAE-BBF8-9E153218F7BB">
+      <dmn:contextEntry>
+        <dmn:variable id="_38C01E0C-8B44-46E8-869B-E9E3F0A820BB" name="Name" typeRef="string"/>
+        <dmn:literalExpression id="_EFCC2EC4-70D1-4711-9347-C5450FBB85EA">
+          <dmn:text>Product</dmn:text>
+        </dmn:literalExpression>
+      </dmn:contextEntry>
+      <dmn:contextEntry>
+        <dmn:variable id="_232CA8AF-75DE-4B6C-AF08-FB4EF3DF5131" name="Grams of Cocoa in Product" typeRef="number"/>
+        <dmn:literalExpression id="_3888A2E4-D1F3-4B62-A062-8A59C94270CD">
+          <dmn:text>Product Details[Name = Product].Grams of Cocoa</dmn:text>
+        </dmn:literalExpression>
+      </dmn:contextEntry>
+      <dmn:contextEntry>
+        <dmn:variable id="_20B249A1-9ABD-4C89-B958-C5CD5673419B" name="Grams of Cocoa in Order" typeRef="number"/>
+        <dmn:literalExpression id="_EA9997A4-9247-4A08-BDC6-497D1379642C">
+          <dmn:text>Qty*Grams of Cocoa in Product</dmn:text>
+        </dmn:literalExpression>
+      </dmn:contextEntry>
+    </dmn:context>
+  </dmn:decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_7B47E010-D42B-4285-A246-EAA146FBBC65" name="DRG">
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_F3E114B3-992F-444A-A344-E4A5D5B3D114">
+            <kie:width>50</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_0ADA142E-7B67-4B32-8946-6B5F9964C09D"/>
+          <kie:ComponentWidths dmnElementRef="_2BC0510A-4E2F-4FDD-A7BB-1327F0869FA5"/>
+          <kie:ComponentWidths dmnElementRef="_2BF1B248-8572-42F3-B216-0C2DA1E94068"/>
+          <kie:ComponentWidths dmnElementRef="_F9460E1E-76AF-47EB-970D-B65A8EE8BF9D"/>
+          <kie:ComponentWidths dmnElementRef="_401807EB-E884-4191-A546-68157D14EBB7"/>
+          <kie:ComponentWidths dmnElementRef="_6E099A18-77C1-4990-BB66-884931B6B282"/>
+          <kie:ComponentWidths dmnElementRef="_0F1B1B38-DDBC-4270-B757-4D9AD3302211"/>
+          <kie:ComponentWidths dmnElementRef="_74420960-E28E-41D9-A6FF-575A159B1241"/>
+          <kie:ComponentWidths dmnElementRef="_6206EC37-22E2-45D7-B881-E608AA065CEA"/>
+          <kie:ComponentWidths dmnElementRef="_A036CD25-E9DA-47D4-9508-8659B9E39A21"/>
+          <kie:ComponentWidths dmnElementRef="_5A55D553-EC29-4DAE-BBF8-9E153218F7BB">
+            <kie:width>50</kie:width>
+            <kie:width>206</kie:width>
+            <kie:width>435</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_EFCC2EC4-70D1-4711-9347-C5450FBB85EA">
+            <kie:width>435</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_3888A2E4-D1F3-4B62-A062-8A59C94270CD">
+            <kie:width>435</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_EA9997A4-9247-4A08-BDC6-497D1379642C">
+            <kie:width>435</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-drg-_7CCD7061-49B5-4BDC-A506-F8180FFA64E8" dmnElementRef="_7CCD7061-49B5-4BDC-A506-F8180FFA64E8" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="97.60000038146973" y="60" width="366.6077" height="293.6254"/>
+        <dmndi:DMNLabel/>
+        <dmndi:DMNDecisionServiceDividerLine>
+          <di:waypoint x="97.60000038146973" y="160"/>
+          <di:waypoint x="464.20770038146975" y="160"/>
+        </dmndi:DMNDecisionServiceDividerLine>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_D06BA54A-74CE-4D60-B63E-29ED8611DD7C" dmnElementRef="_D06BA54A-74CE-4D60-B63E-29ED8611DD7C" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="327" y="170" width="109" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_87FA3BB7-E566-4BFF-A56B-86C4826C9C72" dmnElementRef="_87FA3BB7-E566-4BFF-A56B-86C4826C9C72" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="147.59813084112147" y="287" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_7E48F289-0E23-4A86-B086-1B18B3660215" dmnElementRef="_7E48F289-0E23-4A86-B086-1B18B3660215" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="245.29906542056074" y="232" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_4C0AD11F-26D2-49DB-BF03-7C3DEE61AB45" dmnElementRef="_4C0AD11F-26D2-49DB-BF03-7C3DEE61AB45" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="148" y="97" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-drg-_7E14A2AD-27E4-4260-BAAE-A819C6FDC423-AUTO-TARGET" dmnElementRef="_7E14A2AD-27E4-4260-BAAE-A819C6FDC423">
+        <di:waypoint x="197.59813084112147" y="312"/>
+        <di:waypoint x="198" y="147"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_092A8D99-6B62-49B3-863A-C4350B3B9D66-AUTO-TARGET" dmnElementRef="_092A8D99-6B62-49B3-863A-C4350B3B9D66">
+        <di:waypoint x="381.5" y="195"/>
+        <di:waypoint x="198" y="147"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_21608DC6-93E3-4E58-A395-F2EF8CEBC945-AUTO-TARGET" dmnElementRef="_21608DC6-93E3-4E58-A395-F2EF8CEBC945">
+        <di:waypoint x="295.29906542056074" y="257"/>
+        <di:waypoint x="198" y="147"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>

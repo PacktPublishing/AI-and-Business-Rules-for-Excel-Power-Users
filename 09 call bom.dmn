@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_2E9C8650-3BD2-4F46-9C52-CE236F04C49F" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:included1="https://kiegroup.org/dmn/_4ED1AE61-D019-4728-8700-19137861BAA3" id="_7C891FF6-28BD-419D-ABA2-07BFE981525B" name="Untitled" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_2E9C8650-3BD2-4F46-9C52-CE236F04C49F">
+  <dmn:extensionElements/>
+  <dmn:import id="_282E4CA1-63C6-472E-AA05-9A206BBA8BBB" name="bom" namespace="https://kiegroup.org/dmn/_4ED1AE61-D019-4728-8700-19137861BAA3" locationURI="c09 Bill of Materials.dmn" importType="http://www.omg.org/spec/DMN/20180521/MODEL/"/>
+  <dmn:decision id="_859610CD-9385-4105-A098-415EF375A122" name="DecisionInvocation">
+    <dmn:extensionElements/>
+    <dmn:variable id="_3273DA92-3DE4-4FF4-8981-5B0DF7FA6308" name="DecisionInvocation"/>
+    <dmn:informationRequirement id="_2055BDA9-B7CB-4AD0-824D-E02E26AF72F8">
+      <dmn:requiredInput href="#_998149E4-4C59-400C-9741-F968C3351C24"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_E24A854E-2D89-41BF-B13D-0EC136AFBA70">
+      <dmn:requiredKnowledge href="https://kiegroup.org/dmn/_4ED1AE61-D019-4728-8700-19137861BAA3#_7CCD7061-49B5-4BDC-A506-F8180FFA64E8"/>
+    </dmn:knowledgeRequirement>
+    <dmn:invocation id="_6BED74EA-1AA1-4F5D-8BBC-B49686FE9DDA">
+      <dmn:literalExpression id="_99E0CDD1-81A6-498B-96E6-7CA47957A4B1">
+        <dmn:text>bom.BOM Service</dmn:text>
+      </dmn:literalExpression>
+      <dmn:binding>
+        <dmn:parameter id="_9451164D-DCCF-4DAF-8EF8-8B484B57E313" name="Qty" typeRef="number"/>
+        <dmn:literalExpression id="_B0E4B125-2696-4004-AC5E-51EBC78BA366">
+          <dmn:text>InQty</dmn:text>
+        </dmn:literalExpression>
+      </dmn:binding>
+      <dmn:binding>
+        <dmn:parameter id="_E81428CB-E679-466E-A741-94A6A595D571" name="Product" typeRef="string"/>
+        <dmn:literalExpression id="_B9CA51A7-AB42-4374-84D0-0311B642AC39">
+          <dmn:text>"Silk Tray"</dmn:text>
+        </dmn:literalExpression>
+      </dmn:binding>
+    </dmn:invocation>
+  </dmn:decision>
+  <dmn:inputData id="_998149E4-4C59-400C-9741-F968C3351C24" name="InQty">
+    <dmn:extensionElements/>
+    <dmn:variable id="_AEC4CF87-68DA-4669-BFE2-50150EB74BC9" name="InQty" typeRef="Any"/>
+  </dmn:inputData>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_56AED707-E2C2-41AE-88DE-2FAD2BE6076F" name="DRG">
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_6BED74EA-1AA1-4F5D-8BBC-B49686FE9DDA">
+            <kie:width>50</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>300</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_99E0CDD1-81A6-498B-96E6-7CA47957A4B1"/>
+          <kie:ComponentWidths dmnElementRef="_B0E4B125-2696-4004-AC5E-51EBC78BA366">
+            <kie:width>300</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_B9CA51A7-AB42-4374-84D0-0311B642AC39">
+            <kie:width>300</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-drg-_7CCD7061-49B5-4BDC-A506-F8180FFA64E8" dmnElementRef="included1:_7CCD7061-49B5-4BDC-A506-F8180FFA64E8" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="83" y="59" width="200" height="200"/>
+        <dmndi:DMNLabel/>
+        <dmndi:DMNDecisionServiceDividerLine>
+          <di:waypoint x="83" y="159"/>
+          <di:waypoint x="283" y="159"/>
+        </dmndi:DMNDecisionServiceDividerLine>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_859610CD-9385-4105-A098-415EF375A122" dmnElementRef="_859610CD-9385-4105-A098-415EF375A122" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="397" y="134" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_998149E4-4C59-400C-9741-F968C3351C24" dmnElementRef="_998149E4-4C59-400C-9741-F968C3351C24" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="396.59764934465" y="242" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-drg-_2055BDA9-B7CB-4AD0-824D-E02E26AF72F8" dmnElementRef="_2055BDA9-B7CB-4AD0-824D-E02E26AF72F8">
+        <di:waypoint x="446.59764934465" y="267"/>
+        <di:waypoint x="447" y="159"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_E24A854E-2D89-41BF-B13D-0EC136AFBA70-AUTO-SOURCE-AUTO-TARGET" dmnElementRef="_E24A854E-2D89-41BF-B13D-0EC136AFBA70">
+        <di:waypoint x="183" y="59"/>
+        <di:waypoint x="447" y="184"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>

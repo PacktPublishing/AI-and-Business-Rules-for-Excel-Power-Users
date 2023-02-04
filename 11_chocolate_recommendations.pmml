@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_2" xmlns:data="http://jpmml.org/jpmml-model/InlineTable" version="4.2">
+	<Header>
+		<Application name="SkLearn2PMML package" version="0.90.2"/>
+		<Timestamp>2023-01-10T14:43:54Z</Timestamp>
+	</Header>
+	<MiningBuildTask>
+		<Extension name="repr">PMMLPipeline(steps=[('classifier', GaussianNB())])</Extension>
+	</MiningBuildTask>
+	<DataDictionary>
+		<DataField name="Main Product" optype="categorical" dataType="string">
+			<Value value="Lumpy Bar"/>
+			<Value value="Peanut Candy"/>
+			<Value value="Silk Tray"/>
+		</DataField>
+		<DataField name="Customer_Age" optype="continuous" dataType="double"/>
+		<DataField name="Country_Code" optype="continuous" dataType="double"/>
+	</DataDictionary>
+	<NaiveBayesModel threshold="0.0" modelName="chocolateRecommendation" functionName="classification" algorithmName="sklearn.naive_bayes.GaussianNB">
+		<MiningSchema>
+			<MiningField name="Main Product" usageType="target"/>
+			<MiningField name="Customer_Age"/>
+			<MiningField name="Country_Code"/>
+		</MiningSchema>
+		<Output>
+			<OutputField name="probability(Lumpy Bar)" optype="continuous" dataType="double" feature="probability" value="Lumpy Bar"/>
+			<OutputField name="probability(Peanut Candy)" optype="continuous" dataType="double" feature="probability" value="Peanut Candy"/>
+			<OutputField name="probability(Silk Tray)" optype="continuous" dataType="double" feature="probability" value="Silk Tray"/>
+		</Output>
+		<BayesInputs>
+			<BayesInput fieldName="Customer_Age">
+				<TargetValueStats>
+					<TargetValueStat value="Lumpy Bar">
+						<GaussianDistribution mean="72.35714285714286" variance="108.94389070830496"/>
+					</TargetValueStat>
+					<TargetValueStat value="Peanut Candy">
+						<GaussianDistribution mean="71.2" variance="75.36001315728456"/>
+					</TargetValueStat>
+					<TargetValueStat value="Silk Tray">
+						<GaussianDistribution mean="60.2" variance="226.44572744299884"/>
+					</TargetValueStat>
+				</TargetValueStats>
+			</BayesInput>
+			<BayesInput fieldName="Country_Code">
+				<TargetValueStats>
+					<TargetValueStat value="Lumpy Bar">
+						<GaussianDistribution mean="403.92857142857144" variance="11.923482545039667"/>
+					</TargetValueStat>
+					<TargetValueStat value="Peanut Candy">
+						<GaussianDistribution mean="129.53333333333333" variance="5382.648902046173"/>
+					</TargetValueStat>
+					<TargetValueStat value="Silk Tray">
+						<GaussianDistribution mean="286.4142857142857" variance="9488.842666218516"/>
+					</TargetValueStat>
+				</TargetValueStats>
+			</BayesInput>
+		</BayesInputs>
+		<BayesOutput fieldName="Main Product">
+			<TargetValueCounts>
+				<TargetValueCount value="Lumpy Bar" count="14"/>
+				<TargetValueCount value="Peanut Candy" count="15"/>
+				<TargetValueCount value="Silk Tray" count="70"/>
+			</TargetValueCounts>
+		</BayesOutput>
+	</NaiveBayesModel>
+</PMML>

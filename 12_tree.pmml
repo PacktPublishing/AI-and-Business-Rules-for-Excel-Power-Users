@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_4" xmlns:data="http://jpmml.org/jpmml-model/InlineTable" version="4.4">
+	<Header>
+		<Application name="SkLearn2PMML package" version="0.90.2"/>
+		<Timestamp>2023-01-10T22:46:34Z</Timestamp>
+	</Header>
+	<MiningBuildTask>
+		<Extension name="repr">PMMLPipeline(steps=[('classifier', DecisionTreeClassifier())])</Extension>
+	</MiningBuildTask>
+	<DataDictionary>
+		<DataField name="Main Product" optype="categorical" dataType="string">
+			<Value value="Lumpy Bar"/>
+			<Value value="Peanut Candy"/>
+			<Value value="Silk Tray"/>
+		</DataField>
+		<DataField name="Customer_Age" optype="continuous" dataType="float"/>
+		<DataField name="Country_Code" optype="continuous" dataType="float"/>
+	</DataDictionary>
+	<TreeModel functionName="classification" algorithmName="sklearn.tree._classes.DecisionTreeClassifier" missingValueStrategy="nullPrediction">
+		<MiningSchema>
+			<MiningField name="Main Product" usageType="target"/>
+			<MiningField name="Country_Code"/>
+			<MiningField name="Customer_Age"/>
+		</MiningSchema>
+		<Output>
+			<OutputField name="probability(Lumpy Bar)" optype="continuous" dataType="double" feature="probability" value="Lumpy Bar"/>
+			<OutputField name="probability(Peanut Candy)" optype="continuous" dataType="double" feature="probability" value="Peanut Candy"/>
+			<OutputField name="probability(Silk Tray)" optype="continuous" dataType="double" feature="probability" value="Silk Tray"/>
+		</Output>
+		<LocalTransformations>
+			<DerivedField name="double(Country_Code)" optype="continuous" dataType="double">
+				<FieldRef field="Country_Code"/>
+			</DerivedField>
+			<DerivedField name="double(Customer_Age)" optype="continuous" dataType="double">
+				<FieldRef field="Customer_Age"/>
+			</DerivedField>
+		</LocalTransformations>
+		<Node>
+			<True/>
+			<Node score="Peanut Candy" recordCount="12">
+				<SimplePredicate field="double(Country_Code)" operator="lessOrEqual" value="121.5"/>
+				<ScoreDistribution value="Lumpy Bar" recordCount="0"/>
+				<ScoreDistribution value="Peanut Candy" recordCount="12"/>
+				<ScoreDistribution value="Silk Tray" recordCount="0"/>
+			</Node>
+			<Node>
+				<SimplePredicate field="double(Country_Code)" operator="lessOrEqual" value="394.5"/>
+				<Node>
+					<SimplePredicate field="double(Country_Code)" operator="lessOrEqual" value="124.5"/>
+					<Node score="Peanut Candy" recordCount="1">
+						<SimplePredicate field="double(Customer_Age)" operator="lessOrEqual" value="61.0"/>
+						<ScoreDistribution value="Lumpy Bar" recordCount="0"/>
+						<ScoreDistribution value="Peanut Candy" recordCount="1"/>
+						<ScoreDistribution value="Silk Tray" recordCount="0"/>
+					</Node>
+					<Node score="Silk Tray" recordCount="1">
+						<SimplePredicate field="double(Customer_Age)" operator="lessOrEqual" value="70.5"/>
+						<ScoreDistribution value="Lumpy Bar" recordCount="0"/>
+						<ScoreDistribution value="Peanut Candy" recordCount="0"/>
+						<ScoreDistribution value="Silk Tray" recordCount="1"/>
+					</Node>
+					<Node score="Peanut Candy" recordCount="1">
+						<SimplePredicate field="double(Customer_Age)" operator="lessOrEqual" value="74.5"/>
+						<ScoreDistribution value="Lumpy Bar" recordCount="0"/>
+						<ScoreDistribution value="Peanut Candy" recordCount="1"/>
+						<ScoreDistribution value="Silk Tray" recordCount="0"/>
+					</Node>
+					<Node score="Silk Tray" recordCount="1">
+						<True/>
+						<ScoreDistribution value="Lumpy Bar" recordCount="0"/>
+						<ScoreDistribution value="Peanut Candy" recordCount="0"/>
+						<ScoreDistribution value="Silk Tray" recordCount="1"/>
+					</Node>
+				</Node>
+				<Node score="Silk Tray" recordCount="55">
+					<True/>
+					<ScoreDistribution value="Lumpy Bar" recordCount="0"/>
+					<ScoreDistribution value="Peanut Candy" recordCount="0"/>
+					<ScoreDistribution value="Silk Tray" recordCount="55"/>
+				</Node>
+			</Node>
+			<Node>
+				<SimplePredicate field="double(Country_Code)" operator="lessOrEqual" value="410.5"/>
+				<Node>
+					<SimplePredicate field="double(Country_Code)" operator="lessOrEqual" value="400.5"/>
+					<Node score="Lumpy Bar" recordCount="1">
+						<SimplePredicate field="double(Customer_Age)" operator="lessOrEqual" value="59.0"/>
+						<ScoreDistribution value="Lumpy Bar" recordCount="1"/>
+						<ScoreDistribution value="Peanut Candy" recordCount="0"/>
+						<ScoreDistribution value="Silk Tray" recordCount="0"/>
+					</Node>
+					<Node score="Lumpy Bar" recordCount="1">
+						<SimplePredicate field="double(Country_Code)" operator="lessOrEqual" value="397.0"/>
+						<ScoreDistribution value="Lumpy Bar" recordCount="1"/>
+						<ScoreDistribution value="Peanut Candy" recordCount="0"/>
+						<ScoreDistribution value="Silk Tray" recordCount="0"/>
+					</Node>
+					<Node score="Silk Tray" recordCount="2">
+						<True/>
+						<ScoreDistribution value="Lumpy Bar" recordCount="0"/>
+						<ScoreDistribution value="Peanut Candy" recordCount="0"/>
+						<ScoreDistribution value="Silk Tray" recordCount="2"/>
+					</Node>
+				</Node>
+				<Node>
+					<SimplePredicate field="double(Customer_Age)" operator="lessOrEqual" value="64.5"/>
+					<Node score="Lumpy Bar" recordCount="2">
+						<SimplePredicate field="double(Customer_Age)" operator="lessOrEqual" value="62.5"/>
+						<ScoreDistribution value="Lumpy Bar" recordCount="2"/>
+						<ScoreDistribution value="Peanut Candy" recordCount="0"/>
+						<ScoreDistribution value="Silk Tray" recordCount="0"/>
+					</Node>
+					<Node score="Peanut Candy" recordCount="1">
+						<True/>
+						<ScoreDistribution value="Lumpy Bar" recordCount="0"/>
+						<ScoreDistribution value="Peanut Candy" recordCount="1"/>
+						<ScoreDistribution value="Silk Tray" recordCount="0"/>
+					</Node>
+				</Node>
+				<Node score="Lumpy Bar" recordCount="10">
+					<True/>
+					<ScoreDistribution value="Lumpy Bar" recordCount="10"/>
+					<ScoreDistribution value="Peanut Candy" recordCount="0"/>
+					<ScoreDistribution value="Silk Tray" recordCount="0"/>
+				</Node>
+			</Node>
+			<Node score="Silk Tray" recordCount="11">
+				<True/>
+				<ScoreDistribution value="Lumpy Bar" recordCount="0"/>
+				<ScoreDistribution value="Peanut Candy" recordCount="0"/>
+				<ScoreDistribution value="Silk Tray" recordCount="11"/>
+			</Node>
+		</Node>
+	</TreeModel>
+</PMML>

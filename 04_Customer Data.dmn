@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_602020A5-AF14-4FB3-9C3A-4B38DB4C2A19" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_7832154B-D70E-46BC-A9C8-AD7621578D47" name="Customer Recommendations" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_602020A5-AF14-4FB3-9C3A-4B38DB4C2A19">
+  <dmn:extensionElements/>
+  <dmn:itemDefinition id="_FDE27DF4-0E7E-4B98-BDCB-F32E4E75EB59" name="tCustomer" isCollection="false">
+    <dmn:itemComponent id="_859B8C3B-4D3F-4562-840C-EED13CAC9448" name="Number" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_DEABBE95-E61C-4063-90F7-CE1FAD1A07AA" name="Name" isCollection="false">
+      <dmn:typeRef>Any</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_1F4B493F-90EF-4A07-82D2-FE1C3AA1546F" name="Date of Birth" isCollection="false">
+      <dmn:typeRef>date</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_13598DEE-37FB-483F-B544-733E4643DD55" name="Country of Residence" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_4A910D34-7214-477A-9269-30927F0833FF" name="Special Requests" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+      <dmn:allowedValues kie:constraintType="enumeration" id="_32B0B57A-141A-4B5E-8BBB-2BA41FF653E9">
+        <dmn:text>"diabetic", "vegan", "lactose intolerant"</dmn:text>
+      </dmn:allowedValues>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_AA78D1AD-5F69-4CA6-9531-D5803E329291" name="Previous Orders" isCollection="true">
+      <dmn:typeRef>tOrder</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="_004DD748-7932-46F7-A062-E7C35B63BBE5" name="tOrder" isCollection="false">
+    <dmn:typeRef>number</dmn:typeRef>
+  </dmn:itemDefinition>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_4B2A6304-B103-4F20-A3E7-E89CAE47B65D" name="DRG">
+      <di:extension>
+        <kie:ComponentsWidthsExtension/>
+      </di:extension>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>

@@ -1,0 +1,84 @@
+
+async function main(workbook: ExcelScript.Workbook) {
+
+    /* 
+    Example calling Decision Service from Excel Using Office Script
+    */
+
+    console.log("Example Started");
+
+    // The URL of our decision service -you will need to update this
+    let url =
+        "https://dmn-dev-sandbox-gd12mqh3f203-crt-openshift-dev.apps.sandbox.x8i5.p1.openshiftapps.com/Customer Recommendations/Product Recommendation Service";
+
+    // headers - won't change
+    const headers = {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+    };
+
+    // setup our standard package wwe will pass to the Decision Service.
+    // We change the values using script  but easier to start with defaults like this
+    let payload = {
+        Customer: {
+            Number: 1000,
+            Name: "Jane Doe",
+            "Date of Birth": "2022 - 10 - 15",
+            "Country of Residence": "NL",
+            "Special Requests": "NA",
+            "Previous Orders": [0]
+        }
+    };
+
+    // Log the values we are going to pass to the decision service
+    console.log("Calling Decision Service with the Payload");
+    console.log(JSON.stringify(payload));
+
+    // Make the call to the Decision Service and wait for response
+    const response = await fetch(url, { method: "POST", headers: headers, body: JSON.stringify(payload) });
+    const jsonResponse: Object = await response.json();
+
+    // Log the values we we get back from the decision service. We don't stringify this, which allows you to explore the object tree in the Console.
+    console.log("Response from the Decision Service");
+    console.log(jsonResponse);
+
+
+    //get the specfic values within the response we are interested in
+    let productRecommendation: Object= jsonResponse["decisionResults"][0]["result"];
+    console.log("Product Recommendation");
+    console.log(productRecommendation);
+
+
+    //(re)create our output sheet
+    // The ? ensures that the delete() API is only called if the object exists.
+    workbook.getWorksheet('Product Recommendation')?.delete();
+    let thisSheet= workbook.addWorksheet('Product Recommendation');
+
+
+    //(re)create the Headers
+    let headerRange = thisSheet.getCell(0,0);
+    headerRange.getFormat().getFill().setColor("#4472C4");
+    headerRange.getFormat().getFont().setColor("white");
+    headerRange.setValue("Recommendation from Decision Service");
+    headerRange.getFormat().autofitColumns();
+
+
+    //Update the sheet with our recommendation
+    let datarange = thisSheet.getCell(1, 0);
+    if (!Array.isArray(productRecommendation)) {
+
+        // single value
+        datarange.setValue(productRecommendation);
+    } else {
+
+        //mutiple values we put into one cell
+        //in real life you update a range
+      datarange.setValue(JSON.stringify(productRecommendation));
+    }
+
+
+    //Set the sheet to active
+    thisSheet.activate();
+
+
+}
