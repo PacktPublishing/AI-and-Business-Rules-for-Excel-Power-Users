@@ -60,3 +60,8 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 ## Get to Know the Author
 **Paul Browne**
 is a Programme Manager - Training and Consulting at Enterprise Ireland. His skillset includes delivering consulting and training into companies to help them grow faster, better and earlier. Particular focus in working on Digital Transformation alongside Sales and Marketing, Manufacturing and Financial teams. His educational qualifications includes Msc Advanced Software Engineering at University College Dublin and BA European Business Studies with French at Ulster University, Northern Ireland. His professional qualifications includes ACCA (Financial management modules), CIPS - Procurement Professional, and Technical certifications from Oracle (Java) and Microsoft.
+
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781804619544">https://packt.link/free-ebook/9781804619544 </a> </p>
