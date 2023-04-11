@@ -1,8 +1,8 @@
 # AI and Business Rules for Excel Power Users
 
-<a href="https://www.amazon.com/Business-Engines-Excel-Power-Users/dp/180461954X?utm_source=github&utm_medium=repository&utm_campaign=9781804613900"><img src="https://m.media-amazon.com/images/I/511zmj7OcXL._SX403_BO1,204,203,200_.jpg" alt="AI and Business Rules for Excel Power Users" height="256px" align="right"></a>
+<a href="https://www.packtpub.com/product/ai-and-business-rule-engines-for-excel-power-users/9781804619544"><img src="https://m.media-amazon.com/images/I/511zmj7OcXL._SX403_BO1,204,203,200_.jpg" alt="AI and Business Rules for Excel Power Users" height="256px" align="right"></a>
 
-This is the code repository for [AI and Business Rules for Excel Power Users](https://www.amazon.com/Business-Engines-Excel-Power-Users/dp/180461954X?utm_source=github&utm_medium=repository&utm_campaign=9781804613900), published by Packt.
+This is the code repository for [AI and Business Rules for Excel Power Users](https://www.packtpub.com/product/ai-and-business-rule-engines-for-excel-power-users/9781804619544), published by Packt.
 
 **Capture and scale your business knowledge into the cloud – with Microsoft 365, Decision Models, and AI tools from IBM and Red Hat**
 
